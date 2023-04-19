@@ -1,7 +1,6 @@
 package parking
 
 fun main() {
-    println("White car has parked.")
-    println("Yellow car left the parking lot.")
-    println("Green car just parked here.")
+    val lotParking = LotParking(2)
+    Attendant(lotParking).talk()
 }
