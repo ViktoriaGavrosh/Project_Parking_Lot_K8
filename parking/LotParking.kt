@@ -6,18 +6,20 @@ class LotParking(countSpot: Int){
         for (i in 0 until countSpot) {
             parkingPlaces.add(Spot(i + 1))
         }
-        park("RA-01-UU-1234", Color.YELLOW)
     }
 
     fun park(number: String, color: Color) {
+        var isCarParked = false
         for (i in parkingPlaces) {
             if (i.isFree) {
                 i.car = Car(number, color)
                 i.isFree = false
-                if (i.number != 1) println("${i.car!!.color.nameColor} car parked in spot ${i.number}.")
+                isCarParked = true
+                println("${i.car!!.color.nameColor} car parked in spot ${i.number}.")
                 break
             }
         }
+        if (!isCarParked) println("Sorry, the parking lot is full.")
     }
 
     fun leave (number: Int) {
