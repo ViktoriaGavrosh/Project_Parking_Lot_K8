@@ -23,7 +23,7 @@ class LotParking(countSpot: Int){
     fun leave (number: Int) {
         val i = parkingPlaces[number - 1]
         if (i.isFree) {
-            println("There is no car in spot ${i.number}")
+            println("There is no car in spot ${i.number}.")
         } else {
             i.car = null
             i.isFree = true

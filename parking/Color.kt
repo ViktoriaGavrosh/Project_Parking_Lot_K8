@@ -5,5 +5,6 @@ enum class Color(val nameColor: String) {
     WHITE("White"),
     BLACK("Black"),
     YELLOW("Yellow"),
-    GREEN("Green")
+    GREEN("Green"),
+    RED("Red")
 }
