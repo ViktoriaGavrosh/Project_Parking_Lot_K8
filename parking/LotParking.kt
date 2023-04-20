@@ -6,9 +6,10 @@ class LotParking(countSpot: Int){
         for (i in 0 until countSpot) {
             parkingPlaces.add(Spot(i + 1))
         }
+        println("Created a parking lot with $countSpot spots.")
     }
 
-    fun park(number: String, color: Color) {
+    internal fun park(number: String, color: Color) {
         var isCarParked = false
         for (i in parkingPlaces) {
             if (i.isFree) {
@@ -22,7 +23,7 @@ class LotParking(countSpot: Int){
         if (!isCarParked) println("Sorry, the parking lot is full.")
     }
 
-    fun leave (number: Int) {
+    internal fun leave (number: Int) {
         val i = parkingPlaces[number - 1]
         if (i.isFree) {
             println("There is no car in spot ${i.number}.")
@@ -31,5 +32,16 @@ class LotParking(countSpot: Int){
             i.isFree = true
             println("Spot ${i.number} is free.")
         }
+    }
+
+    internal fun showStatus() {
+        var isEmpty = true
+        for (i in parkingPlaces) {
+            if (!i.isFree) {
+                println("${i.number} ${i.car!!.number} ${i.car!!.color.nameColor}")
+                isEmpty = false
+            }
+        }
+        if (isEmpty) println("Parking lot is empty.")
     }
 }
