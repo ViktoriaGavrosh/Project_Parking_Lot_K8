@@ -9,6 +9,9 @@ class Attendant(private val lotParking: LotParking) {
                 "park" -> lotParking.park(command[1], Color.valueOf(command[2].uppercase()))
                 "leave" -> lotParking.leave(command[1].toInt())
                 "status" -> lotParking.showStatus()
+                "reg_by_color" -> lotParking.showCars(Color.valueOf(command[1].uppercase()), "reg")
+                "spot_by_color" -> lotParking.showCars(Color.valueOf(command[1].uppercase()), "spot")
+                "spot_by_reg" -> lotParking.showSpotCar(command[1])
                 "exit", "create" -> break
                 else -> continue
             }

@@ -44,4 +44,32 @@ class LotParking(countSpot: Int){
         }
         if (isEmpty) println("Parking lot is empty.")
     }
+
+    internal fun showCars(color: Color, output: String) {
+        var isFirst = true
+        for (i in parkingPlaces) {
+            if (!i.isFree && i.car!!.color == color) {
+                if (!isFirst) print(", ")
+                print(
+                    when(output) {
+                        "reg" -> i.car!!.number
+                        else -> i.number
+                    })
+                isFirst = false
+            }
+        }
+        println( if (isFirst) "No cars with color ${color.name} were found." else "")
+    }
+
+    internal fun showSpotCar(number: String) {
+        var isCarFound = false
+        for (i in parkingPlaces) {
+            if (!i.isFree && i.car!!.number == number) {
+                println(i.number)
+                isCarFound = true
+                break
+            }
+        }
+        if (!isCarFound) println("No cars with registration number $number were found.")
+    }
 }
